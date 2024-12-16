@@ -1,0 +1,12 @@
+node_modules
+build
+dist
+
+# Исключаем скрытые файлы и папки
+.git
+.gitignore
+.idea
+.vscode
+
+# Исключаем файл Dockerfile и .dockerignore из контекста сборки
+.dockerignore
