@@ -1,5 +1,5 @@
 import { CART_STORAGE_KEY, useCart } from "../../hooks/useCart";
-import { X, Trash2, MessageCircleMore } from "lucide-react";
+import { X, Trash2, MessageCircleMore, PlusCircle, MinusCircle } from "lucide-react";
 import { formatWhatsAppMessage, getWhatsAppLink } from "../../utils/whatsapp";
 import { productData } from "../../hooks/productHook";
 import { CartItem, Product } from "../../types";
@@ -38,7 +38,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const handleCheckout = () => {
     const message = formatWhatsAppMessage(
       cart?.items as CartItem[],
-      products as Product[],
+      products as Product[]
     );
     window.open(getWhatsAppLink(message), "_blank");
   };
@@ -91,6 +91,11 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                             {product.price}₽
                           </p>
                           <div className="mt-2 flex items-center space-x-2">
+                          <button
+                              onClick={() => updateQuantity(item.productId, item.quantity - 1,)}
+                            >
+                              <MinusCircle />
+                            </button>
                             <input
                               type="number"
                               min="1"
@@ -103,6 +108,11 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                               }
                               className="w-16 px-2 py-1 border rounded-md"
                             />
+                            <button
+                              onClick={() => updateQuantity(item.productId, item.quantity + 1,)}
+                            >
+                              <PlusCircle />
+                            </button>
                             <button
                               onClick={() => removeFromCart(item.productId)}
                               className="text-red-500 hover:text-red-600"

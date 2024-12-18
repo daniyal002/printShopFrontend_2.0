@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../types';
 import { CART_STORAGE_KEY, useCart } from '../../hooks/useCart';
 import { formatWhatsAppMessage, getWhatsAppLink } from '../../utils/whatsapp';
-import { ShoppingCart, MessageCircleMore } from 'lucide-react';
+import { ShoppingCart, MessageCircleMore, PlusCircle, MinusCircle } from 'lucide-react';
 import ProductItemByIdCarusel from '../carousel/CarouselImageAndVideo';
 import { message } from 'antd';
 
@@ -42,9 +42,8 @@ export function ProductCard({ product }: ProductCardProps) {
     const message = formatWhatsAppMessage(
       [{ productId: product.id as number, quantity }],
       [product],
-      'Customer'
     );
-    window.open(getWhatsAppLink(message, '1234567890'), '_blank');
+    window.open(getWhatsAppLink(message), '_blank');
   };
 
 
@@ -71,6 +70,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <label htmlFor={`quantity-${product.id}`} className="text-sm text-gray-600">
               Количество:
             </label>
+            <button onClick={() => setQuantity(prev => prev < 2 ? prev : prev - 1)}><MinusCircle/></button>
             <input
               id={`quantity-${product.id}`}
               type="number"
@@ -79,6 +79,8 @@ export function ProductCard({ product }: ProductCardProps) {
               onChange={(e) => setQuantity(parseInt(e.target.value))}
               className="w-20 px-2 py-1 border rounded-md"
             />
+            <button onClick={() => setQuantity(prev => prev + 1)}
+             ><PlusCircle /></button>
           </div>
           <div className="flex space-x-2">
             <button

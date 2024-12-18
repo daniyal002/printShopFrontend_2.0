@@ -17,9 +17,9 @@ export function CategoryCard({ category }: CategoryCardProps) {
         <img src={`${baseURL}/uploads/${category.image_url}`} alt={`${category.category_name}`}  className="w-8 h-8 text-blue-600"/>
       </div>
       <h3 className="mt-4 text-lg font-medium text-gray-900">{category.category_name}</h3>
-      <p className="mt-1 text-sm text-gray-500 text-center">
+      {/* <p className="mt-1 text-sm text-gray-500 text-center">
         {category.category_name}
-      </p>
+      </p> */}
     </Link>
   );
 }
