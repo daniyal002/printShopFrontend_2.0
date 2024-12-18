@@ -17,7 +17,7 @@ export function Header() {
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
               <ShoppingBag className="w-8 h-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">БМаркет</span>
+              <span className="text-xl font-bold text-gray-900">ММаркет</span>
             </Link>
             <CartButton/>
           </div>

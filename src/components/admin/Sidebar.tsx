@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Layout, Menu, Button } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Package, Menu as MenuIcon, X } from 'lucide-react';
+import { ShoppingBag, Package, Menu as MenuIcon, X, Home } from 'lucide-react';
 
 const { Sider } = Layout;
 
@@ -19,6 +19,11 @@ export function Sidebar() {
       key: '/admin/categories',
       icon: <Package className="w-4 h-4" />,
       label: <Link to="/admin/categories">Категории</Link>,
+    },
+    {
+      key: '/',
+      icon: <Home className="w-4 h-4" />,
+      label: <Link to="/">В магазин</Link>,
     },
   ];
 
