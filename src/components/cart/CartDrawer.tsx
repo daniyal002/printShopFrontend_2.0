@@ -31,9 +31,6 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     };
   }, [isOpen, cart]);
 
-  useEffect(() => {
-    console.log(cart);
-  }, [isOpen, cart]);
 
   const handleCheckout = () => {
     const message = formatWhatsAppMessage(

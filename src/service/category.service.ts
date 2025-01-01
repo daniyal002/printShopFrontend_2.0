@@ -1,4 +1,4 @@
-import { axiosClassic } from "../api/interseptots"
+import { axiosAuth, axiosClassic } from "../api/interseptots"
 import { Category } from "../types"
 
 export const categoriesService = {
@@ -22,7 +22,7 @@ export const categoriesService = {
             formData.append('parent_id', data.parent_id.toString());
         }
 
-        const response = await axiosClassic.post<Category>('/categories', formData, {
+        const response = await axiosAuth.post<Category>('/categories', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -40,7 +40,7 @@ export const categoriesService = {
             formData.append('parent_id', updatedCategory.parent_id.toString());
         }
 
-        const response = await axiosClassic.patch<Category>(`/categories/${updatedCategory.id}`, formData, {
+        const response = await axiosAuth.patch<Category>(`/categories/${updatedCategory.id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -49,7 +49,7 @@ export const categoriesService = {
     },
 
     async deleteCategory(id:number){
-        const response = await axiosClassic.delete(`/categories/${id}`)
+        const response = await axiosAuth.delete(`/categories/${id}`)
         return response.data
     }
 }

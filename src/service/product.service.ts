@@ -1,4 +1,4 @@
-import { axiosClassic } from '../api/interseptots';
+import { axiosAuth, axiosClassic } from '../api/interseptots';
 import { Product } from '../types';
 
 export const productsService = {
@@ -18,29 +18,29 @@ export const productsService = {
   },
 
   async addProduct(product: Product){
-    const response = await axiosClassic.post<Product>('/products', product);
+    const response = await axiosAuth.post<Product>('/products', product);
     return response.data;
   },
 
   async updateProduct(updatedProduct: Product){
-    const response = await axiosClassic.patch<Product>(`/products/${updatedProduct.id}`, updatedProduct);
+    const response = await axiosAuth.patch<Product>(`/products/${updatedProduct.id}`, updatedProduct);
     return response.data;
   },
 
   async deleteProduct(id: number){
-    const response = await axiosClassic.delete(`/products/${id}`);
+    const response = await axiosAuth.delete(`/products/${id}`);
     return response.data;
   },
 
   async uploadProductImages(productId: number, formData: FormData) {
-    const response = await axiosClassic.post(`/products/${productId}/images`, formData, {
+    const response = await axiosAuth.post(`/products/${productId}/images`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
     return response.data;
   },
 
   async uploadProductVideo(productId: number, formData: FormData) {
-    const response = await axiosClassic.post(`/products/${productId}/upload-video`, formData, {
+    const response = await axiosAuth.post(`/products/${productId}/upload-video`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
     return response.data;

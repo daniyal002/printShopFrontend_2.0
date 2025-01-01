@@ -2,17 +2,22 @@ import { Layout } from 'antd';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Sidebar } from '../../components/admin/Sidebar';
 import Cookies from 'js-cookie'
+import { useEffect } from 'react';
+import { EnumTokens } from '../../service/auth-token.service';
+
 const { Content } = Layout;
 
 export function AdminLayout() {
-
-  const editer = Cookies.get('editer')
   const navigate = useNavigate();
 
-  if(!editer){
-    navigate('/')
-    return null
-  }
+  useEffect(() => {
+    const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
+
+    if (!accessToken) {
+      navigate('/login')
+      return
+    }
+  }, [navigate])
 
   return (
     <Layout className="min-h-screen">

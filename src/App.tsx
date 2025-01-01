@@ -10,6 +10,7 @@ import { Products } from "./pages/admin/Products";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CartButton from "./components/ui/CartButton";
 import Login from "./components/login/Login";
+import { Stores } from "./pages/admin/Stores";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="categories" element={<Categories />} />
               <Route path="products" element={<Products />} />
+              <Route path="stores" element={<Stores />} />
             </Route>
           </Routes>
         </BrowserRouter>

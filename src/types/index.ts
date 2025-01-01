@@ -38,3 +38,12 @@ export interface CartState {
 export interface ExtendedFile extends File {
   uid: string;
 }
+
+export interface IStoreDto {
+  id?: number
+  name: string
+  address: string
+  phone: string
+  contactName: string
+  images: string[]
+}
