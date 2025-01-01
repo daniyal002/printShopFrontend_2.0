@@ -20,6 +20,7 @@ export const useAuth = () => {
     // }
 
     const useLogin = () => {
+
         const { mutate: login, isPending: isLoginPending } = useMutation({
             mutationFn: ({ login, password }: { login: string, password: string }) =>
                 AuthService.login(login, password),
