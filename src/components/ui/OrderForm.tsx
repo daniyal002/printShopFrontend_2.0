@@ -46,8 +46,8 @@ export function OrderForm({ categories, price, onClose }: Props) {
 
     // Create WhatsApp message
     const createWhatsAppMessage = () => {
-        const items = inputs.map(input => ` Надпись: ${input.text}, Количество: ${input.quantity}, `).join('\n');
-        return `Индивидуальный заказ: Категория: ${categories.category_name},\n${storeAddress ? ` Адрес: ${storeAddress}` : ""},\n${items}\nОбщая стоимость: ${calculateTotalCost()} рублей`;
+        const items = inputs.map(input => `${input.text} - ${input.quantity}шт., `).join('\n');
+        return `Индивидуальный заказ: Категория: ${categories.category_name},\n${storeAddress ? ` Адрес: ${storeAddress}` : ""}, \nНадпись: ${items}\nОбщая стоимость: ${calculateTotalCost()} рублей`;
     };
 
     // Calculate total cost
